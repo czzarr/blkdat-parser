@@ -1,0 +1,33 @@
+{
+  "name": "blkdat-parser",
+  "version": "1.0.0",
+  "description": "Streaming parser of the blk*.dat files created by bitcoind",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "keywords": [
+    "bitcoind",
+    "bitcoin",
+    "core",
+    "blocks",
+    "streaming",
+    "parser"
+  ],
+  "author": "Stanislas Marion <stanislas.marion@gmail.com> (http://github.com/czzarr)",
+  "license": "MIT",
+  "dependencies": {
+    "bcoin-utils": "^1.0.0",
+    "bitcoin-constants": "^1.1.0",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "bitcoin-block-streaming-parser": "file:../bitcoin-block-streaming-parser",
+    "combined-stream": "0.0.5",
+    "glob": "^4.0.6",
+    "tape": "^3.0.1"
+  }
+}
