@@ -1,6 +1,6 @@
 {
   "name": "blkdat-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Streaming parser of the blk*.dat files created by bitcoind",
   "main": "index.js",
   "directories": {
@@ -17,6 +17,10 @@
     "streaming",
     "parser"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/czzarr/blkdat-parser.git"
+  },
   "author": "Stanislas Marion <stanislas.marion@gmail.com> (http://github.com/czzarr)",
   "license": "MIT",
   "dependencies": {
