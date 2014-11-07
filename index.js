@@ -29,7 +29,7 @@ module.exports = function (network) {
 
     var off = 0
     var diff = -1
-    var block, magic, size, raw
+    var block, magic, size, bsize, raw
 
     while (true) {
       switch (state) {
@@ -56,15 +56,15 @@ module.exports = function (network) {
           break
 
         case S.END_OF_MAGIC:
-          size = chunk.slice(off, off + 4)
+          bsize = chunk.slice(off, off + 4)
 
-          if (size.length < 4) {
+          if (bsize.length < 4) {
             state = S.MIDDLE_OF_SIZE
-            cache = { size: size }
+            cache = { bsize: bsize }
             return done()
           }
 
-          size = readU32(size)
+          size = readU32(bsize)
           off += 4
           state = S.END_OF_SIZE
           break
@@ -107,6 +107,12 @@ module.exports = function (network) {
 
         case S.MIDDLE_OF_MAGIC:
           magic = Buffer.concat([cache.magic, chunk.slice(0, 4 - cache.magic.length)])
+
+          if (magic.length < 4) { // magic still not complete
+            cache.magic = magic
+            return done()
+          }
+
           off += 4 - cache.magic.length
 
           if (readU32(magic) !== constants.magic)
@@ -117,8 +123,15 @@ module.exports = function (network) {
           break
 
         case S.MIDDLE_OF_SIZE:
-          size = readU32(Buffer.concat([cache.size, chunk.slice(0, 4 - cache.size.length)]))
-          off += 4 - cache.size.length
+          bsize = Buffer.concat([cache.bsize, chunk.slice(0, 4 - cache.bsize.length)])
+
+          if (bsize.length < 4) { // size still not complete
+            cache.bsize = bsize
+            return done()
+          }
+          size = readU32(bsize)
+
+          off += 4 - cache.bsize.length
           cache = undefined
           state = S.END_OF_SIZE
           break
