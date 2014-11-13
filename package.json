@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "async": "^0.9.0",
-    "bcoin-block": "^1.4.0",
+    "bcoin-block": "^1.5.0",
     "bcoin-tx": "^1.5.0",
     "bcoin-utils": "^1.1.0",
     "bitcoin-block-streaming-parser": "1.1.0",
