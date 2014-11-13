@@ -35,7 +35,8 @@ glob('blk*.dat', { cwd: dataDir }, function (err, files) {
           var t = btx('testnet3', chunk.txs[0])
           //console.log(t);
           //console.log(util.inspect(t.outputs, false, null));
-          //console.log(t.hash('hex'));
+          console.log(t.hash('hex'));
+          console.log(t.txid('hex'));
           //console.log(b.tx);
           //console.log('hash', t.hash('hex'));
           //console.log('txid', t.txid('hex'));
