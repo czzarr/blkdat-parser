@@ -1,9 +1,9 @@
 var through = require('through2')
-var utils = require('bcoin-utils')
-var readU32 = utils.readU32
+var bcoin = require('bcoin-core')
+var readU32 = bcoin.utils.readU32
 
 module.exports = function (network) {
-  var constants = require('bitcoin-constants')(network)
+  var constants = bcoin.constants(network)
 
   var cache
   var s = 0

@@ -1,6 +1,6 @@
 {
   "name": "blkdat-parser",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Streaming parser of the blk*.dat files created by bitcoind",
   "main": "index.js",
   "directories": {

@@ -40,7 +40,7 @@ glob('blk*.dat', { cwd: dataDir }, function (err, files) {
           //console.log(b.tx);
           //console.log('hash', t.hash('hex'));
           //console.log('txid', t.txid('hex'));
-          throw Error()
+          //throw Error()
           done()
         }))
     }
